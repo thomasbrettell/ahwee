@@ -1,6 +1,8 @@
 import $ from 'jquery'
 import Backbone from 'backbone'
 
+console.log('hello')
+
 const rootID = '#app-root';
 
 var SongModel = Backbone.Model.extend()
