@@ -1,9 +1,15 @@
 import $ from 'jquery'
 import Backbone from 'backbone'
-
-console.log('hello')
+import _ from 'underscore'
 
 const rootID = '#app-root';
+
+let songsArray = [
+  {title: 'Hiasd'},
+  {title: 'cxiqq'},
+  {title: 'czxk'}
+]
+
 
 var SongModel = Backbone.Model.extend()
 
@@ -35,11 +41,12 @@ var SongsView = Backbone.View.extend({
   }
 })
 
-var songsCollection = new SongsCollection([
-  new SongModel({title: 'yayoh', id: 1}),
-  new SongModel({title: 'yaywooo', id: 2}),
-  new SongModel({title: 'yayhooray', id: 3})
-])
+var songsCollection = new SongsCollection([])
+
+_.each(songsArray, function(song, index){
+  console.log('!')
+  songsCollection.add(new SongModel({title: song.title, id: index}))
+})
 
 console.log(songsCollection)
 
