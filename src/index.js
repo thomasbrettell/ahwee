@@ -13,7 +13,7 @@ var SongsCollection = Backbone.Collection.extend({
 
 var SongView = Backbone.View.extend({
 
-  tagName: 'li',
+  tagName: 'h1',
 
   render: function() {
     console.log(this)
