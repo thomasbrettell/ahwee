@@ -1,0 +1,87 @@
+id: '1',
+  title: 'Fake Survey',
+  questions: [
+    {
+      id: 'dsad',
+      title: 'daisjd',
+      type: 'checkbox',
+      elements: [
+        {
+          title: 'element title',
+          type: 'checkbox',
+          choices: [
+            '1',
+            '2',
+            '3',
+            '4',
+            '5'
+          ]
+        },
+        {
+          type: 'checkbox',
+          choices: [
+            '11',
+            '22',
+            '33',
+            '44',
+            '55'
+          ]
+        },
+        {
+          type: 'checkbox',
+          choices: [
+            '111',
+            '222',
+            '333',
+            '444',
+            '555'
+          ]
+        },
+        {
+          title: 'Textbox',
+          type: 'text'
+        },
+        {
+          title: 'Textbox',
+          type: 'radiogroup',
+          choices: [
+            '1111',
+            '2222',
+            '3333',
+            '4444',
+            '5555'
+          ]
+        },
+        {
+          title: 'dynamic text',
+          type: 'dynamictext',
+          choices: [
+            '1111',
+            '2222',
+            '3333',
+            '4444',
+            '5555'
+          ]
+        },
+            {
+      id: 'dsad',
+      title: 'How much wood',
+      type: 'multirating',
+      elements: [
+        {
+          title: 'element title1',
+          type: 'rating',
+        },
+        {
+          title: 'element title2',
+          type: 'rating',
+        },
+        {
+          title: 'element title3',
+          type: 'rating',
+        }
+      ]
+    }
+      ]
+    }
+  ]
