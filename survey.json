@@ -1,0 +1,958 @@
+{
+  "id": "health-providers-individuals",
+  "title": "Health providers (individuals)",
+  "questions": [
+    {
+      "id": "select_area",
+      "title": "Select your primary area of health",
+      "questionType": "radiogroup",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "Select your primary area of health",
+          "titleLocation": "hidden",
+          "isRequired": true,
+          "choices": [
+            "Individual Healthcare Professionals",
+            "Healthcare Organisations",
+            "Clinical & Consumer Organisations",
+            "General Public",
+            "Industry Partners",
+            "Industry & Technology",
+            "Other"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "personal_information",
+      "title": "Let's begin with your details",
+      "customClasses": "consent",
+      "showQuestionNumbers": "off",
+      "elements": [
+        {
+          "customClasses": "input-normal",
+          "type": "text",
+          "name": "First name",
+          "title": "First name"
+        },
+        {
+          "customClasses": "input-normal",
+          "type": "text",
+          "name": "Last name",
+          "title": "Last name"
+        },
+        {
+          "isRequired": true,
+          "type": "radiogroup",
+          "name": "Select your state",
+          "title": "Select your state",
+          "titleLocation": "top",
+          "choices": [
+            "New South Wales",
+            "Victoria",
+            "Western Australia",
+            "Tasmania",
+            "South Australia",
+            "Northern Territory",
+            "Queensland",
+            "Australian Capital Territory"
+          ]
+        },
+        {
+          "isRequired": true,
+          "type": "radiogroup",
+          "name": "consent",
+          "title": "Select the level of consent you give to your comments being quoted publicly",
+          "customClasses": "square",
+          "choices": [
+            {  
+              "value": "quoted_publically_identified",  
+              "text": "I consent to my comments being quoted publicly, and I want to be identified"  
+            },
+            {  
+              "value": "quoted_publically_non_identified",  
+              "text": "I consent to my comments being quoted publicly, as long as myself, or my organisation, are not identified."  
+            },
+            {  
+              "value": "non_quoted",  
+              "text": "I do not wish to be directly quoted."  
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "primary_profession",
+      "title": "What is your primary profession?",
+      "questionType": "radiogroup",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "type": "radiogroup",
+          "name": "What is your primary profession?",
+          "isRequired": true,
+          "choices": [
+            "Aboriginal Health Worker",
+            "Audiologist",
+            "Care Worker",
+            "Chinese Medicine Practitioner",
+            "Chiropractor",
+            "Dentist",
+            "Exercise Physiologist",
+            "General Practitioner",
+            "Occupational Therapist",
+            "Optometrist",
+            "Osteopath",
+            "Medical Specialist",
+            "Nurse",
+            "Nurse Practitioner",
+            "Midwife",
+            "Paramedic",
+            "Pharmacist",
+            "Physiotherapist",
+            "Podiatrist",
+            "Psychologist",
+            "Radiographer/Ultra-sonologist",
+            "Social Worker",
+            "Speech Pathologist",
+            "Other"
+          ]
+        }
+      ],
+      "otherQuestion": {
+        "id": "primary_profession_other",
+        "title": "What is your primary profession?",
+        "questionType": "other",
+        "elements": [
+          {
+            "titleLocation": "hidden",
+            "type": "other",
+            "name": "What is your primary profession?",
+            "panelAddText": "Add more",
+            "minPanelCount": 1,
+            "maxPanelCount": 3,
+            "isRequired": true,
+            "allowRemovePanel": false,
+            "templateElements": [
+              {
+                "name": "other",
+                "type": "text",
+                "isRequired": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "specialisation",
+      "title": "What is your specialisation?",
+      "questionType": "text",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "type": "text",
+          "name": "What is your specialisation?",
+          "isRequired": true
+        }
+      ]
+    },
+    {
+      "id": "years_practicing",
+      "title": "How many years have you been practicing?",
+      "questionType": "text",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "inputType": "number",
+          "type": "text",
+          "name": "How many years have you been practicing?",
+          "isRequired": true
+        }
+      ]
+    },
+    {
+      "id": "work_postcode",
+      "title": "What is the postcode of where you work most often?",
+      "questionType": "text",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "inputType": "number",
+          "type": "text",
+          "name": "What is the postcode of where you work most often?",
+          "isRequired": true
+        }
+      ]
+    },
+    {
+      "id": "primary_workplace",
+      "title": "What is the primary setting of your workplace?",
+      "questionType": "checkbox",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "type": "checkbox",
+          "name": "What is the primary setting of your workplace?",
+          "isRequired": true,
+          "choices": [
+            "General Practice",
+            "Public hospital",
+            "Private hospital",
+            "Private rooms or clinic",
+            "Laboratory or radiology facility",
+            "Community health centre",
+            "Patient home or premises",
+            "Pharmacy (including Community Pharmacy)",
+            "Aged care home",
+            "Aboriginal Community Controlled Health Organisations",
+            "Other"
+          ]
+        }
+      ],
+      "otherQuestion": {
+        "id": "primary_workplace_other",
+        "title": "What is the primary setting of your workplace?",
+        "questionType": "other",
+        "elements": [
+          {
+            "titleLocation": "hidden",
+            "type": "other",
+            "name": "What is the primary setting of your workplace?",
+            "panelAddText": "Add more",
+            "minPanelCount": 1,
+            "maxPanelCount": 3,
+            "isRequired": true,
+            "allowRemovePanel": false,
+            "templateElements": [
+              {
+                "name": "other",
+                "type": "text",
+                "isRequired": true
+              }
+            ]
+          }
+        ]
+      },
+      "conditionalLogic": {
+        "condition": "General Practice",
+        "conditionalQuestion": {
+          "id": "gp_size",
+          "title": "If General Practice is selected, what is the size of your practice?",
+          "questionType": "radiogroup",
+          "elements": [
+            {
+              "titleLocation": "hidden",
+              "type": "radiogroup",
+              "name": "If General Practice is selected, what is the size of your practice?",
+              "isRequired": true,
+              "choices": [
+                "Solo practice",
+                "Small group",
+                "Corporatized"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "communication_tec",
+      "title": "What technologies do your organisation use to communicate with patients?",
+      "questionType": "checkbox",
+      "none": "Do not use technologies for communication",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "type": "checkbox",
+          "name": "What technologies do your organisation use to communicate with patients?",
+          "isRequired": true,
+          "choices": [
+            "Telehealth - audio only",
+            "Telehealth - video",
+            "Text messages (SMS) to patients",
+            "Email to patients or providers",
+            "Secure messaging (e-referral) or Real-time information exchange",
+            "Mobile devices",
+            "Do not use technologies for communication",
+            "Other"
+          ]
+        }
+      ],
+      "otherQuestion": {
+        "id": "communication_tec_other",
+        "title": "List the other technologies your organisation uses to communicate with patients.",
+        "questionType": "other",
+        "elements": [
+          {
+            "titleLocation": "hidden",
+            "type": "other",
+            "name": "List the other technologies your organisation uses to communicate with patients.",
+            "panelAddText": "Add more",
+            "minPanelCount": 1,
+            "maxPanelCount": 3,
+            "isRequired": true,
+            "allowRemovePanel": false,
+            "templateElements": [
+              {
+                "name": "other",
+                "type": "text",
+                "isRequired": true
+              }
+            ]
+          }
+        ],
+        "conditionalLogic": {
+          "type": "other-update"
+        }
+      },
+      "conditionalLogic": {
+        "type": "update",
+        "conditionalQuestion": {
+          "id": "communication_tec_rating",
+          "title": "How effective are these tools in enabling you to complete tasks associated with your role and to serve patient needs?",
+          "questionType": "multirating",
+          "showQuestionNumbers": "off",
+          "elements": [
+          ]
+        }
+      }
+    },
+    {
+      "id": "care_tech",
+      "title": "What technologies do you use to deliver patient care?",
+      "questionType": "checkbox",
+      "none": "Do not use technologies to deliver healthcare",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "type": "checkbox",
+          "isRequired": true,
+          "name": "What technologies do you use to deliver patient care?",
+          "choices": [
+            "Electronic Medical Record",
+            "Patient identification, booking, and registration systems",
+            "Digital Practice Management Tools",
+            "Digital Clinical Information Systems",
+            "Clinical communication and collaboration tools",
+            "Electronic prescription and medication management systems",
+            "Electronic laboratory and diagnostic imaging management",
+            "Pathology results system",
+            "Diagnostic results system",
+            "Mobile phones, health apps and online resources",
+            "Wearable devices for patient monitoring",
+            "Video conferencing",
+            "Do not use technologies to deliver healthcare",
+            "Other"
+          ]
+        }
+      ],
+      "otherQuestion": {
+        "id": "care_tech_other",
+        "title": "List the other technologies your organisation uses to deliver patient care.",
+        "questionType": "other",
+        "elements": [
+          {
+            "titleLocation": "hidden",
+            "type": "other",
+            "name": "List the other technologies your organisation uses to deliver patient care.",
+            "panelAddText": "Add more",
+            "minPanelCount": 1,
+            "maxPanelCount": 3,
+            "isRequired": true,
+            "allowRemovePanel": false,
+            "templateElements": [
+              {
+                "name": "other",
+                "type": "text",
+                "isRequired": true
+              }
+            ]
+          }
+        ],
+        "conditionalLogic": {
+          "type": "other-update"
+        }
+      },
+      "conditionalLogic": {
+        "type": "update",
+        "conditionalQuestion": {
+          "id": "care_tech_rating",
+          "title": "How effective are these tools in enabling you to complete tasks associated with your role and to serve patient needs?",
+          "questionType": "multirating",
+          "showQuestionNumbers": "off",
+          "elements": [
+          ]
+        }
+      }
+    },
+    {
+      "id": "increased_tech_use",
+      "title": "Has your organisation increased its usage of technologies over the past 12 months?",
+      "questionType": "radiogroup",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "type": "radiogroup",
+          "name": "Has your organisation increased its usage of technologies over the past 12 months?",
+          "isRequired": true,
+          "choices": [
+            "Yes, it's increased",
+            "No, it hasn't increased"
+          ]
+        }
+      ],
+      "conditionalLogic": {
+        "condition": "Yes, it's increased",
+        "conditionalQuestion": {
+          "id": "increased_tech_use_y",
+          "title": "If yes, in a few words, please provide a reason why.",
+          "questionType": "text",
+          "elements": [
+            {
+              "titleLocation": "hidden",
+              "type": "text",
+              "name": "If yes, in a few words, please provide a reason why.",
+              "isRequired": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "patient_increase",
+      "title": "Over the past 12 months, have you seen an increase in patients?",
+      "questionType": "radiogroup",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "type": "radiogroup",
+          "name": "Over the past 12 months, have you seen an increase in patients?",
+          "isRequired": true,
+          "choices": [
+            "Yes, it's increased",
+            "No, it hasn't increased"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "patient_tech_expec",
+      "title": "Over the past 12 months, have you seen an increase in patients expecting you to use digital health?",
+      "questionType": "radiogroup",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "type": "radiogroup",
+          "name": "Over the past 12 months, have you seen an increase in patients expecting you to use digital health?",
+          "isRequired": true,
+          "choices": [
+            "Yes, it's increased",
+            "No, it hasn't increased"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tech_adoption_desc",
+      "title": "How would you describe your organisation when they adopt digital technologies?",
+      "questionType": "radiogroup",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "type": "radiogroup",
+          "name": "How would you describe your organisation when they adopt digital technologies?",
+          "isRequired": true,
+          "customClasses": "square",
+          "choices": [
+            "Active adopter - one of the first to actively adopt digital solutions",
+            "Early supporter - early supporter of using digital solutions",
+            "Early majority – adopter of digital solutions after a brief trial period",
+            "Late majority – adopter of digital solutions after a long trial period",
+            "Laggard – one of the last to adopt digital solutions"
+          ]
+        }
+      ],
+      "conditionalLogic": {
+        "condition": "Laggard – one of the last to adopt digital solutions",
+        "conditionalQuestion": {
+          "id": "tech_adoption_laggard",
+          "questionType": "text",
+          "title": "If you identify your organisation as slow to adopt technologies (i.e. laggard), please provide a reason why.",
+          "elements": [
+            {
+              "titleLocation": "hidden",
+              "type": "text",
+              "name": "If you identify your organisation as slow to adopt technologies (i.e. laggard), please provide a reason why.",
+              "isRequired": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "cyber_sec_rating",
+      "title": "To what extent do you agree with the following statement:",
+      "textbox": {
+        "body": "'My clinical environment has a strong cyber security framework'"
+      },
+      "questionType": "rating",
+      "description": "1 = Strongly Disagree, 5 = Strongly Agree",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "isRequired": true,
+          "type": "rating",
+          "name": "To what extent do you agree with the following statement:'My clinical environment has a strong cyber security framework'"
+        }
+      ]
+    },
+    {
+      "id": "tec_incor_confidence",
+      "title": "How confident are you at incorporating digital health technologies into your day-to-day activities?",
+      "questionType": "rating",
+      "description": "1 = Extremely Unconfident, 5 = Extremely Confident",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "isRequired": true,
+          "type": "rating",
+          "name": "How confident are you at incorporating digital health technologies into your day-to-day activities?"
+        }
+      ]
+    },
+    {
+      "id": "tech_incor_barriers",
+      "title": "When it comes to incorporating digital health into your day-to-day activities, what barriers do you face?",
+      "questionType": "checkbox",
+      "none": "I have not personally experienced any barriers",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "type": "checkbox",
+          "name": "When it comes to incorporating digital health into your day-to-day activities, what barriers do you face?",
+          "isRequired": true,
+          "choices": [
+            "Cost/Funding Model",
+            "Lack of integration with existing systems and processes (including models of care)",
+            "Complexity",
+            "Unreliable performance",
+            "Poor user experience and/or interface",
+            "Privacy and security concerns",
+            "Inadequate training and education",
+            "Insufficient infrastructure and/or support",
+            "Access to latest digital health tools and technologies",
+            "Other",
+            "I have not personally experienced any barriers"
+          ]
+        }
+      ],
+      "otherQuestion": {
+        "id": "care_tech_used_other",
+        "title": "List the other barriers you face when it comes to incorporating digital health into your day-to-day activities.",
+        "questionType": "other",
+        "elements": [
+          {
+            "titleLocation": "hidden",
+            "type": "other",
+            "name": "List the other barriers you face when it comes to incorporating digital health into your day-to-day activities.",
+            "panelAddText": "Add more",
+            "minPanelCount": 1,
+            "maxPanelCount": 3,
+            "isRequired": true,
+            "allowRemovePanel": false,
+            "templateElements": [
+              {
+                "name": "other",
+                "type": "text",
+                "isRequired": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "barrier_pops",
+      "title": "What populations do you provide services for that face barriers to healthcare?",
+      "questionType": "checkbox",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "type": "checkbox",
+          "name": "What populations do you provide services for that face barriers to healthcare?",
+          "isRequired": true,
+          "choices": [
+            "Aboriginal and/or Torres Strait Islander person",
+            "Person with a disability",
+            "Lived experience of mental illness",
+            "Multicultural or Culturally and Linguistically Diverse (CALD) person",
+            "Lesbian, gay, bisexual, transgender, intersex, queer and other sexuality and gender diverse (LGBTIQ+) person",
+            "Person living in regional, rural or remote areas",
+            "Older person",
+            "Young person",
+            "Lower socio-economic groups",
+            "Person living with a specific condition(s)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "barrier_pops_elab",
+      "title": "In a few words, please elaborate on your selection.",
+      "questionType": "text",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "type": "text",
+          "name": "In a few words, please elaborate on your selection.",
+          "isRequired": true
+        }
+      ]
+    },
+    {
+      "id": "pops_tech_acc",
+      "title": "What technologies will make this more accessible for these populations?",
+      "questionType": "checkbox",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "type": "checkbox",
+          "name": "What technologies will make this more accessible for these populations?",
+          "isRequired": true,
+          "choices": [
+            "Computers, laptops, tablets",
+            "Landline",
+            "Mobile devices and apps",
+            "Connected home devices",
+            "Wearables devices (e.g. smart watches)",
+            "Data/internet",
+            "Webinars",
+            "Video conferencing/online meetings",
+            "Other"
+          ]
+        }
+      ],
+      "otherQuestion": {
+        "id": "pops_tech_acc_other",
+        "title": "List the other technologies that will help with accessibility for these populations.",
+        "questionType": "other",
+        "elements": [
+          {
+            "titleLocation": "hidden",
+            "type": "other",
+            "name": "List the other technologies that will help with accessibility for these populations.",
+            "panelAddText": "Add more",
+            "minPanelCount": 1,
+            "maxPanelCount": 3,
+            "isRequired": true,
+            "allowRemovePanel": false,
+            "templateElements": [
+              {
+                "name": "other",
+                "type": "text",
+                "isRequired": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "pops_not_engage",
+      "title": "Why do some of your patients choose not to engage with you digitally?",
+      "questionType": "checkbox",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "type": "checkbox",
+          "name": "Why do some of your patients choose not to engage with you digitally?",
+          "isRequired": true,
+          "choices": [
+            "Difficult to access",
+            "Difficult to afford",
+            "Security/privacy of these services",
+            "Ability to use",
+            "Lack of engagement from healthcare provider",
+            "Don’t want to use",
+            "Unsure if services exist",
+            "Other"
+          ]
+        }
+      ],
+      "otherQuestion": {
+        "id": "pops_not_engage_other",
+        "title": "List the other reasons why some of your patients choose not to engage with you digitally.",
+        "questionType": "other",
+        "elements": [
+          {
+            "titleLocation": "hidden",
+            "type": "other",
+            "name": "List the other reasons why some of your patients choose not to engage with you digitally.",
+            "panelAddText": "Add more",
+            "minPanelCount": 1,
+            "maxPanelCount": 3,
+            "isRequired": true,
+            "allowRemovePanel": false,
+            "templateElements": [
+              {
+                "name": "other",
+                "type": "text",
+                "isRequired": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "title": "What would need to change to make digital health technology more accessible to groups that experience barriers to access?",
+      "id": "change_to_engage",
+      "questionType": "comment",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "type": "comment",
+          "rows": 5,
+          "name": "What would need to change to make digital health technology more accessible to groups that experience barriers to access?",
+          "isRequired": true
+        }
+      ]
+    },
+    {
+      "title": "Thinking about today, to what extent do you agree with the following statement:",
+      "textbox": {
+        "body": "The use of digital health has lead to improved patient outcomes."
+      },
+      "id": "improve_outcome_rating",
+      "questionType": "rating",
+      "description": "1 = Strongly Disagree, 5 = Strongly Agree",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "isRequired": true,
+          "type": "rating",
+          "name": "Thinking about today, to what extent do you agree with the following statement: The use of digital health has lead to improved patient outcomes."
+        }
+      ]
+    },
+    {
+      "id": "tec_will_improve",
+      "title": "Thinking about the future, to what extent do you agree with the following statement:",
+      "textbox": {
+        "body": "Digital technology will transform and improve healthcare outcomes for Australians."
+      },
+      "description": "1 = Strongly Disagree, 5 = Strongly Agree",
+      "questionType": "rating",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "isRequired": true,
+          "type": "rating",
+          "name": "Thinking about the future, to what extent do you agree with the following statement: Digital technology will transform and improve healthcare outcomes for Australians."
+        }
+      ]
+    },
+    {
+      "id": "share_better_health",
+      "title": "To what extent do you agree with the following statement:",
+      "textbox": {
+        "body": "Sharing clinical information for population health (the overall health of all Australians) is key to better quality healthcare."
+      },
+      "description": "1 = Strongly Disagree, 5 = Strongly Agree",
+      "questionType": "rating",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "isRequired": true,
+          "type": "rating",
+          "name": "To what extent do you agree with the following statement: Sharing clinical information for population health (the overall health of all Australians) is key to better quality healthcare."
+        }
+      ]
+    },
+    {
+      "id": "health_area_pot",
+      "title": "Is there a particular area of healthcare where you see the greatest potential for digital health to improve outcomes?",
+      "questionType": "radiogroup",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "type": "radiogroup",
+          "name": "Is there a particular area of healthcare where you see the greatest potential for digital health to improve outcomes?",
+          "isRequired": true,
+          "choices": [
+            "Injury prevention and control",
+            "Asthma",
+            "Cardiovascular health conditions",
+            "Arthritis and musculoskeletal conditions",
+            "Mental ill-health",
+            "Dementia",
+            "Diabetes",
+            "Obesity",
+            "Cancer control",
+            "Quality use of medicines and medicines safety",
+            "Aged care",
+            "Primary prevention and maximising wellbeing",
+            "Other (e.g. prenatal care, child health and reproductive health)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "health_achieve",
+      "title": "Looking five years ahead, what would you like digital health to achieve in Australia?",
+      "questionType": "checkbox",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "type": "checkbox",
+          "name": "Looking five years ahead, what would you like digital health to achieve in Australia?",
+          "isRequired": true,
+          "choices": [
+            "Reduction in harm and avoidance",
+            "Person centred and culturally-appropriate care",
+            "Integrated and high quality health care services",
+            "Patient self-management of ongoing condition",
+            "Prevention and wellbeing",
+            "Reduced duplication of services",
+            "Enhanced access to health information",
+            "Data-led population health management",
+            "Other"
+          ]
+        }
+      ],
+      "otherQuestion": {
+        "id": "health_achieve_other",
+        "title": "List the other achievements you'd like digital health to achieve within five years' time.",
+        "questionType": "other",
+        "elements": [
+          {
+            "titleLocation": "hidden",
+            "type": "other",
+            "name": "List the other achievements you'd like digital health to achieve within five years' time.",
+            "panelAddText": "Add more",
+            "minPanelCount": 1,
+            "maxPanelCount": 3,
+            "isRequired": true,
+            "allowRemovePanel": false,
+            "templateElements": [
+              {
+                "name": "other",
+                "type": "text",
+                "isRequired": true
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "health_change",
+      "title": "Thinking about your previous answer, what changes need to be made to achieve these benefits of digital care across the patient care journey?",
+      "questionType": "checkbox",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "type": "checkbox",
+          "name": "Thinking about your previous answer, what changes need to be made to achieve these benefits of digital care across the patient care journey?",
+          "isRequired": true,
+          "choices": [
+            "Business and funding models",
+            "Legislation, regulation & privacy",
+            "Support for provider & partner capability",
+            "Technology infrastructure & standards",
+            "Data, intelligence & analytics",
+            "Consumer digital and health literacy",
+            "Research & innovation (including digital capability)",
+            "Governance & coordination",
+            "Maturity measurement & evaluation",
+            "Quality, safety and clinical governance",
+            "Models of care"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "health_change_desc",
+      "title": "In a few words, describe your reasoning for your previous answer.",
+      "questionType": "text",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "type": "text",
+          "name": "In a few words, describe your reasoning for your previous answer.",
+          "isRequired": true
+        }
+      ]
+    },
+    {
+      "id": "progress_and_monitor",
+      "title": "How can you progress in digital health and its integration across the patient care journey be monitored and measured over time?",
+      "questionType": "checkbox",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "type": "checkbox",
+          "name": "How can you progress in digital health and its integration across the patient care journey be monitored and measured over time?",
+          "isRequired": true,
+          "choices": [
+            "National data collection",
+            "Development of digital health indicators",
+            "Digital health technology uptake and use reporting",
+            "[Additional options TBC]"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "share_anything_else",
+      "title": "Is there anything else that you would like to share to inform the strategy for the future of digital health in Australia?",
+      "questionType": "comment",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "rows": 5,
+          "type": "comment",
+          "name": "Is there anything else that you would like to share to inform the strategy for the future of digital health in Australia?",
+          "isRequired": true
+        }
+      ]
+    },
+    {
+      "id": "kept_informed",
+      "title": "Would you like to be kept informed during the development of the next National Digital Health Strategy?",
+      "questionType": "radiogroup",
+      "elements": [
+        {
+          "titleLocation": "hidden",
+          "type": "radiogroup",
+          "name": "Would you like to be kept informed during the development of the next National Digital Health Strategy?",
+          "isRequired": true,
+          "choices": [
+            "Yes, please keep me informed",
+            "No, I don't wish to be informed"
+          ]
+        }
+      ],
+      "conditionalLogic": {
+        "condition": "Yes, please keep me informed",
+        "conditionalQuestion": {
+          "id": "kept_informed_email",
+          "title": "Please provide your email address?",
+          "questionType": "text",
+          "elements": [
+            {
+              "titleLocation": "hidden",
+              "inputType": "email",
+              "autoComplete": "email",
+              "type": "text",
+              "name": "Please provide your email address?",
+              "isRequired": true
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
