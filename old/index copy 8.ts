@@ -17,7 +17,7 @@ appRoot.before(`
 `)
 
 const CarModel = Backbone.Model.extend({})
-const CarCollection = Backbone.Collection.extend({
+const CarCollection = Backbone.Model.extend({
   model: CarModel
 })
 const CarModelView = Backbone.View.extend({
@@ -35,8 +35,10 @@ const CarCollectionView = Backbone.View.extend({
   tagName: 'ul',
   render: function() {
     let self = this
+    console.log(this.collection)
     
     this.collection.each(function(car:Backbone.Model) {
+      console.log('!')
       let carView = new CarModelView({model: car})
       self.$el.append(carView.render().$el)
     })
@@ -48,26 +50,22 @@ const BoatModel = Backbone.Model.extend({})
 const BoatCollection = Backbone.Collection.extend({
   model: BoatModel
 })
-const BoatModelView = Backbone.View.extend({
-  tagName: 'li',
 
+// const CarsView = Backbone.View.extend({
+//   render: function() {
+//     console.log(this.collection)
+//     // let render = new CarCollectionView({model: cars})
+//     // this.$el.html(render)
+
+//     return this
+//   }
+// })
+
+const BoatsView = Backbone.View.extend({
   render: function() {
-    let template = _.template(boatTemplate())
-    let html = template(this.model.toJSON())
-    this.$el.html(html)
+    this.$el.html('BOATS VIEW')
 
     return this
-  }
-})
-const BoatCollectionView = Backbone.View.extend({
-  tagName: 'ul',
-  render: function() {
-    let self = this
-    
-    this.collection.each(function(car:Backbone.Model) {
-      let carView = new BoatModelView({model: car})
-      self.$el.append(carView.render().$el)
-    })
   }
 })
 
@@ -90,22 +88,23 @@ const AppRouter = Backbone.Router.extend({
       new CarModel({title: 'Car2'})
     ])
 
-    appRoot.html('')
-    appRoot.append('<ul></ul>')
-    let view = new CarCollectionView({el: appRoot.find('ul'), collection: cars})
-    view.render()
+    this.loadView(new CarCollectionView({el: appRoot, collection: cars}))
   },
   viewBoats: function() {
-    let boats = new BoatCollection([
-      new BoatModel({title: 'Yay boat'}),
-      new BoatModel({title: 'boat2'})
-    ])
-
-    appRoot.html('')
-    appRoot.append('<ul></ul>')
-    let view = new BoatCollectionView({el: appRoot.find('ul'), collection: boats})
+    let view = new BoatsView({el: appRoot})
     view.render()
   },
+
+  loadView: function(view:any){
+		// If the currentView is set, remove it explicitly.
+		if (this._currentView) {
+			this._currentView.remove();
+		}
+
+		appRoot.html(view.render().$el);
+		
+		this._currentView = view;
+	},
 
   viewDefault: function() {
     let view = new HomeView({el: appRoot})

@@ -12,3 +12,15 @@ export function newVehicleTemplate() {
     <button type='add'>Add new vehicle</button>
   `)
 }
+
+export function carTemplate() {
+  return(`
+  Car: <%= title %>
+  `)
+}
+
+export function boatTemplate() {
+  return(`
+  Boat: <%= title %>
+  `)
+}
