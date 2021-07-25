@@ -1,6 +1,10 @@
-function TodoItemTemplate() {
+function TodoItemTemplate(checked) {
   return (`
-    <%= description %>
+    <label>
+      <input type='checkbox' ${checked}>
+      <span><%= title %></span>
+    </label>
+    <button type='delete'>Delete</button>
   `)
 }
 

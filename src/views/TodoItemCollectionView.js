@@ -1,12 +1,12 @@
 import Backbone from 'backbone'
 import _ from 'underscore'
+import $ from 'jquery'
 import TodoItemModel from '../models/TodoItemModel'
 import TodoItemModelView from './TodoItemModelView'
+import TodoItemsTemplate from '../templates/TodoItemsTemplate'
 
 const TodoItemCollectionView = Backbone.View.extend({
-  tagName: 'ul',
-
-  className: 'todo-items-list',
+  className: 'todo-list',
 
   initialize: function(options) {
     if(!(options && options.collection)) {
@@ -14,36 +14,38 @@ const TodoItemCollectionView = Backbone.View.extend({
     }
 
     this.collection.on('add', this.onAddTodoItem, this);
+    this.collection.on('remove', this.onRemoveTodoItem, this)
   },
 
   onAddTodoItem: function(item) {
     let view = new TodoItemModelView({model: item})
-    this.$el.append(view.render().$el)
+    this.$('ul').append(view.render().$el)
+  },
+
+  onRemoveTodoItem: function(item) {
+    $(item.attributes.rootElement).remove()
   },
 
   events: {
-    'click button[type=add]': 'addClickHandler'
+    'keypress input[type=text]': 'keyPressHandler'
   },
 
-  addClickHandler: function() {
-    let todoItem = new TodoItemModel({description: this.$('input[type=text]').val()})
-    this.$('input[type=text]').val('')
+  keyPressHandler: function(e) {
+    if(e.originalEvent.key === 'Enter') {
+      let $textField = this.$('input[type=text]')
 
-    this.collection.add(todoItem)
+      if($textField.val().trim().length != 0) {
+        let todoItem = new TodoItemModel({title: $textField.val()})
+        $textField.val('')
+        this.collection.create(todoItem)
+      }
+    }
   },
 
   render: function() {
-    let self = this
-
-    this.$el.prepend(`
-      <input type='text'>
-      <button type='add'>Add</button>
-    `)
-
-    this.collection.each(function(item) {
-      let todoItemView = new TodoItemModelView({model: item})
-      self.$el.append(todoItemView.render().$el)
-    })
+    let template = _.template(TodoItemsTemplate())
+    let html = template(this.collection.toJSON())
+    this.$el.html(html)
 
     return this
   }
