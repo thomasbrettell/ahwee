@@ -1,14 +1,16 @@
+* {
+	box-sizing: border-box;
+}
 
 body {
 	padding: 40px;
   font-family: 'Inter';
 }
 
-body, p { font-size: 24px; }
+body, p { font-size:1.5em; }
 
 
 #venues-container {
-	float: left;
 	width: 300px;
 }
 
@@ -33,8 +35,57 @@ body, p { font-size: 24px; }
 
 
 #map-container {
-	float: left;
 	width: 600px;
 	height: 600px;
 	background: #EDE8E8;
+}
+
+.complete {
+	text-decoration: line-through;
+}
+
+.todo-list {
+	max-width: 850px;
+	margin: auto;
+}
+
+input[type=text] {
+	width: 100%;
+}
+
+button[type=delete]{
+	float: right;
+	font-size: .5em;
+	border: none;
+	border-radius: 10px;
+	color: white;
+	background-color: red;
+	padding: 6px;
+
+	&:active {
+		background-color: darkred;
+	}
+}
+
+.todo-items-list {
+	margin: 0;
+	list-style: none;
+	border-top: 1px solid gray;
+	border-left: 1px solid gray;
+	border-right: 1px solid gray;
+	padding: 0;
+
+	> li {
+		padding: 10px;
+		border-bottom: 1px solid gray;
+	}
+
+	label {
+		max-width: 80%;
+		display: inline-block;
+		&:hover {
+			text-decoration: line-through;
+			text-decoration-color: rgba(0, 0, 0, 0.5);
+		}
+	}
 }
