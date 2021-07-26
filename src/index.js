@@ -11,36 +11,46 @@ console.log(gsap)
 const dotPath = {
   curviness: 1.25,
   values: [
-    {x: 100, y: -120},
-    {x: 300, y: 10},
-    {x: 500, y: 100},
-    {x: 750, y: -100},
-    {x: 350, y: -50},
-    {x: 600, y: 100},
-    {x: 800, y: 0},
-    {x: window.innerWidth, y: -250}
+    {x: window.innerWidth, y: 0}
   ]
 }
 
-const tween = new TimelineLite()
+const oneTween = new TimelineLite()
 
-tween.add(
-  TweenLite.to('.dot', 1, {
+oneTween.add(
+  TweenLite.to('.one .dot', 1, {
     bezier: dotPath,
     ease: Power1.easeInOut
   })
 )
 
-console.log(tween)
+const twoTween = new TimelineLite()
+
+twoTween.add(
+  TweenLite.to('.two .dot', 1, {
+    bezier: dotPath,
+  })
+)
+
 
 const controller = new ScrollMagic.Controller()
 
 const scene = new ScrollMagic.Scene({
-  triggerElement: 'section',
-  duration: 5000,
-  triggerHook: 0
+  triggerElement: '.one',
+  duration: 3000,
+  triggerHook: .25
 })
-.setTween(tween)
+.setTween(oneTween)
 .addIndicators()
-.setPin('section')
+.setPin('.one')
+.addTo(controller)
+
+const sceneTwo = new ScrollMagic.Scene({
+  triggerElement: '.two',
+  duration: 3000,
+  triggerHook: .25
+})
+.setTween(twoTween)
+.addIndicators()
+.setPin('.two')
 .addTo(controller)
