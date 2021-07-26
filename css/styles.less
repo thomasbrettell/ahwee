@@ -1,91 +1,40 @@
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-body {
-	padding: 40px;
-  font-family: 'Inter';
+footer, header {
+  height: 100vh;
+  display: flex;
 }
 
-body, p { font-size:1.5em; }
-
-
-#venues-container {
-	width: 300px;
+h1 {
+  margin: auto;
 }
 
-#venues {
-	list-style: none;
-	border-top: 1px solid #ccc;
-	border-left: 1px solid #ccc;
-	padding-left: 0;
-	margin-top: 0;
-}
-
-#venues li {
-	padding: 30px;
-	border-bottom: 1px solid #ccc;
-	border-right: 1px solid #ccc;
-	cursor: pointer;
-}
-
-#venues li:hover {
-	background: #F7F5F5;
+header {
+  background-image: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);background-image: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);
 }
 
 
-#map-container {
-	width: 600px;
-	height: 600px;
-	background: #EDE8E8;
+footer {
+  background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
 }
 
-.complete {
-	text-decoration: line-through;
+
+section {
+  background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.todo-list {
-	max-width: 850px;
-	margin: auto;
-}
+.dot {
+  background: brown;
+  width: 20px;
+  height: 20px;
+  border-radius: 9999px;
 
-input[type=text] {
-	width: 100%;
-}
-
-button[type=delete]{
-	float: right;
-	font-size: .5em;
-	border: none;
-	border-radius: 10px;
-	color: white;
-	background-color: red;
-	padding: 6px;
-
-	&:active {
-		background-color: darkred;
-	}
-}
-
-.todo-items-list {
-	margin: 0;
-	list-style: none;
-	border-top: 1px solid gray;
-	border-left: 1px solid gray;
-	border-right: 1px solid gray;
-	padding: 0;
-
-	> li {
-		padding: 10px;
-		border-bottom: 1px solid gray;
-	}
-
-	label {
-		max-width: 80%;
-		display: inline-block;
-		&:hover {
-			text-decoration: line-through;
-			text-decoration-color: rgba(0, 0, 0, 0.5);
-		}
-	}
+  position: absolute;
+  top: 50%;
+  left: 0;
 }
