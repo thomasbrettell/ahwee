@@ -1,6 +1,0 @@
-version: "3"
-services: 
-  ahwee:
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
