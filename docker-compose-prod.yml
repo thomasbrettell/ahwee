@@ -1,0 +1,10 @@
+version: "3"
+services: 
+  ahwee:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+      args:
+        - REACT_APP_NAME=Ahwee prod
+    ports:
+      - "8080:80"
