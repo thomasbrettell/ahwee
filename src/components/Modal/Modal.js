@@ -1,11 +1,10 @@
-import ModalOverlay from '../ui/ModalOverlay/ModalOverlay'
-import styles from './Modal.module.css'
+import Card from '../ui/Card/Card'
 
-const Modal = () => {
+const Modal = (props) => {
   return (
-    <ModalOverlay>
-      <div className={styles.Modal}></div>
-    </ModalOverlay>
+    <Card modal>
+      {props.message}
+    </Card>
   )
 }
 

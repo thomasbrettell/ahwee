@@ -1,8 +1,18 @@
 import styles from './Card.module.css'
+import classNames from 'classnames/bind'
+
+const cn = classNames.bind(styles);
 
 const Card = (props) => {
+  const classes = cn({
+    Card: true,
+    modal: props.modal
+  });
+
+  console.log('!')
+
   return (
-    <div className={styles.Card}>
+    <div className={classes}>
       {props.children}
     </div>
   )

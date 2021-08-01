@@ -4,6 +4,7 @@ import Card from './components/ui/Card/Card'
 import UserForm from "./components/UserForm/UserForm";
 import User from './components/User/User'
 import ModalOverlay from './components/ui/ModalOverlay/ModalOverlay'
+import Modal from './components/Modal/Modal'
 
 let initialUsers = [
   {name: 'John', age: 2},
@@ -27,9 +28,7 @@ function App() {
     if(invalid) {
       setModal(
         <ModalOverlay disableModal={invalidHandler}>
-          <Card>
-            <span>{message}</span>
-          </Card>
+          <Modal message={message} />
         </ModalOverlay>
       )
     } else {
@@ -45,7 +44,7 @@ function App() {
         </Card>
         <Card>
           {users.map((user, index) => (
-            <User key={index} user={user}/>
+            <User key={index} user={user} />
           ))}
         </Card>
       </MainWrapper>
