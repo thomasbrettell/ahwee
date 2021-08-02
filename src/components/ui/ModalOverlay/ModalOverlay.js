@@ -1,13 +1,18 @@
+import { useRef } from 'react'
 import ReactDOM from 'react-dom'
 import styles from './ModalOverlay.module.css'
 
 const ModalOverlay = (props) => {
+  const modalRef = useRef()
+
   const clickHandler = (e) => {
-    props.disableModal(false)
+    if (e.target === modalRef.current) {
+      props.disableModal(false)
+    }
   }
 
   return (
-    <div className={styles.ModalOverlay} onClick={clickHandler}>
+    <div className={styles.ModalOverlay} ref={modalRef} onClick={clickHandler}>
       {props.children}
     </div>
   )

@@ -9,8 +9,6 @@ const Card = (props) => {
     modal: props.modal
   });
 
-  console.log('!')
-
   return (
     <div className={classes}>
       {props.children}
