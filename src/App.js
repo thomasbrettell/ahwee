@@ -1,55 +1,41 @@
-import { useState } from "react";
-import MainWrapper from "./components/ui/MainWrapper/MainWrapper";
-import Card from './components/ui/Card/Card'
-import UserForm from "./components/UserForm/UserForm";
-import User from './components/User/User'
-import ModalOverlay from './components/ui/ModalOverlay/ModalOverlay'
-import Modal from './components/Modal/Modal'
+import React, { useState, useEffect } from 'react';
 
-let initialUsers = [
-  {name: 'John', age: 2},
-  {name: 'Bob', age: 15},
-  {name: 'Kevin', age: 35}
-]
+import Login from './components/Login/Login';
+import Home from './components/Home/Home';
+import MainHeader from './components/MainHeader/MainHeader';
+import AuthContext from './context/auth-context';
 
 function App() {
-  const [users, setUsers] = useState(initialUsers);
-  const [showModal, setModal] = useState()
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const addUser = (user) => {
-    setUsers(prevUsers => {
-      const updatedUsers = [...prevUsers];
-      updatedUsers.unshift(user);
-      return updatedUsers;
-    });
-  }
+  useEffect(() => {
+    const loggedInStatus = localStorage.getItem('isLoggedIn')
 
-  const invalidHandler = (invalid, message) => {
-    if(invalid) {
-      setModal(
-        <ModalOverlay disableModal={invalidHandler}>
-          <Modal message={message} />
-        </ModalOverlay>
-      )
-    } else {
-      setModal()
+    if (loggedInStatus === 'true') {
+      setIsLoggedIn(true)
     }
-  }
+  }, [isLoggedIn])
+
+  const loginHandler = (email, password) => {
+    // We should of course check email and password
+    // But it's just a dummy/ demo anyways
+    localStorage.setItem('isLoggedIn', true)
+    setIsLoggedIn(true);
+  };
+
+  const logoutHandler = () => {
+    setIsLoggedIn(false);
+    localStorage.removeItem('isLoggedIn')
+  };
 
   return (
-    <>
-      <MainWrapper>
-        <Card>
-          <UserForm onAddUser={addUser} onInvalidSubmission={invalidHandler} />
-        </Card>
-        <Card>
-          {users.map((user, index) => (
-            <User key={index} user={user} />
-          ))}
-        </Card>
-      </MainWrapper>
-      {showModal}
-    </>
+    <AuthContext.Provider value={{isLoggedIn: isLoggedIn, onLogout: logoutHandler, onLogin: loginHandler}}>
+      <MainHeader />
+      <main>
+        {!isLoggedIn && <Login />}
+        {isLoggedIn && <Home />}
+      </main>
+    </ AuthContext.Provider>
   );
 }
 

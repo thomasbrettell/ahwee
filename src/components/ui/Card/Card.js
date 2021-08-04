@@ -1,19 +1,11 @@
-import styles from './Card.module.css'
-import classNames from 'classnames/bind'
+import React from 'react';
 
-const cn = classNames.bind(styles);
+import classes from './Card.module.css';
 
 const Card = (props) => {
-  const classes = cn({
-    Card: true,
-    modal: props.modal
-  });
-
   return (
-    <div className={classes}>
-      {props.children}
-    </div>
-  )
-}
+    <div className={`${classes.card} ${props.className}`}>{props.children}</div>
+  );
+};
 
-export default Card
+export default Card;
