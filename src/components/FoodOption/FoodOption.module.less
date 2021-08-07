@@ -1,0 +1,47 @@
+.FoodOption {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid grey;
+  padding-bottom: 15px;
+
+  .left {
+    display: inline-flex;
+    flex-direction: column;
+  }
+
+  .right {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    label {
+      margin-bottom: 10px;
+
+      span {
+        margin-right: 5px;
+      }
+    }
+
+    .icon {
+      margin-right: 4px;
+    }
+  }
+
+  .title {
+    font-weight: 700;
+    color: black;
+  }
+
+  .desc {
+    margin: 6px 0;
+  }
+
+  .price {
+    color: chocolate;
+    font-weight: 700;
+  }
+}
+
+.FoodOption + .FoodOption {
+  margin-top: 25px;
+}

@@ -5,7 +5,7 @@ import Cart from '../Cart/Cart'
 const Header = () => {
   return (
     <header className={styles.Header}>
-      <Wrapper>
+      <Wrapper flex>
         <span className={styles.logo}>FooodAppp</span>
         <Cart />
       </Wrapper>
