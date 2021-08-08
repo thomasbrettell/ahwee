@@ -1,69 +1,85 @@
-import { useState } from 'react';
-import styles from './App.module.css'
-import Header from './components/Header/Header'
-import PageImage from './components/PageImage/PageImage';
-import Intro from './components/Intro/Intro'
-import FoodList from './components/FoodList/FoodList'
-import CartContext from './context/cart-context';
+import React, { useState, useEffect, useCallback } from 'react';
 
-const initialItems = [
-  {
-    id: 1,
-    title: 'Chips',
-    description: 'Fried potato',
-    price: 22.99,
-    quantity: 1
-  },
-  {
-    id: 2,
-    title: 'Burger',
-    description: 'Yummy',
-    price: 15,
-    quantity: 0
-  },
-  {
-    id: 3,
-    title: 'Sandwich',
-    description: 'Its a sandwich',
-    price: 1,
-    quantity: 0
-  },
-  {
-    id: 4,
-    title: 'Bacon',
-    description: 'Sizzling',
-    price: 7.5,
-    quantity: 0
-  }
-]
+import MoviesList from './components/MoviesList';
+import AddMovie from './components/AddMovie';
+import './App.css';
 
 function App() {
-  const [items, setItems] = useState(initialItems);
+  const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const updateItemsHandler = (id, quantity) => {
-    setItems(prevItems => {
-      const updatedItems = [...prevItems]
-      let itemIndex = updatedItems.findIndex((item => item.id === id));
-      if (!quantity || quantity < 0) {
-        quantity = 0
+  const fetchMoviesHandler = useCallback(async () => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      const response = await fetch('https://react-http-learning-e8ee3-default-rtdb.firebaseio.com/movie.json');
+      if (!response.ok) {
+        throw new Error('Something went wrong!');
       }
-      updatedItems[itemIndex].quantity = quantity
-      return updatedItems
+
+      const data = await response.json();
+      console.log(data)
+
+      const loadedMovies = []
+
+      for (const key in data) {
+        loadedMovies.push({
+          id: key,
+          title: data[key].title,
+          openingText: data[key].openingText,
+          releaseDate: data[key].releaseDate,
+        })
+      }
+
+      setMovies(loadedMovies);
+    } catch (error) {
+      setError(error.message);
+    }
+    setIsLoading(false);
+  }, []);
+
+  useEffect(() => {
+    fetchMoviesHandler();
+  }, [fetchMoviesHandler]);
+
+  async function addMovieHandler(movie) {
+    console.log(movie);
+    const response = await fetch('https://react-http-learning-e8ee3-default-rtdb.firebaseio.com/movie.json', {
+      method: 'POST',
+      body: JSON.stringify(movie),
+      headers: {
+        'Content-Type': 'application/json'
+      }
     })
+    const data = await response.json()
+    console.log(data)
+  }
+
+  let content = <p>Found no movies.</p>;
+
+  if (movies.length > 0) {
+    content = <MoviesList movies={movies} />;
+  }
+
+  if (error) {
+    content = <p>{error}</p>;
+  }
+
+  if (isLoading) {
+    content = <p>Loading...</p>;
   }
 
   return (
-    <CartContext.Provider value={{
-      updateItems: updateItemsHandler,
-      items: items
-      }}>
-      <main className={styles.Main}>
-        <Header />
-        <PageImage />
-        <Intro />
-        <FoodList />
-      </main>
-    </ CartContext.Provider>
+    <React.Fragment>
+      <section>
+        <AddMovie onAddMovie={addMovieHandler} />
+      </section>
+      <section>
+        <button onClick={fetchMoviesHandler}>Fetch Movies</button>
+      </section>
+      <section>{content}</section>
+    </React.Fragment>
   );
 }
 
