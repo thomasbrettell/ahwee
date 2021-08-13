@@ -9,7 +9,7 @@ const Cart = (props) => {
   return (
     <Card className={classes.cart}>
       <h2>Your Shopping Cart</h2>
-      {cartItems.length === 0
+      {!cartItems
         ? (
           <li className={classes['cart-empty']}><h3>No items in cart</h3></li>
         )

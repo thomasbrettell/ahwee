@@ -4,29 +4,28 @@ import {useSelector} from 'react-redux'
 
 const Products = (props) => {
   const products = useSelector(state => state.products.products)
-  const isLoading = useSelector(state => state.products.isLoading)
 
   return (
     <>
-      {!isLoading
+      {products === 'LOADING'
       ? (
-      <section className={classes.products}>
-        <h2>Buy your favorite products</h2>
-        <ul>
-          {products.map((product) => (
-          <ProductItem
-            key={product.id}
-            id={product.id}
-            title={product.title}
-            price={product.price}
-            description={product.description}
-          />
-          ))}
-        </ul>
-      </section>
+        <p className={classes.loading}>Loading...</p>
       )
       : (
-      <p className={classes.loading}>Loading...</p>
+        <section className={classes.products}>
+          <h2>Buy your favorite products</h2>
+          <ul>
+            {products.map((product) => (
+            <ProductItem
+              key={product.id}
+              id={product.id}
+              title={product.title}
+              price={product.price}
+              description={product.description}
+            />
+            ))}
+          </ul>
+        </section>
       )
     }
     </>

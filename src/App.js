@@ -1,52 +1,48 @@
 import Cart from './components/Cart/Cart';
 import Layout from './components/Layout/Layout';
 import Products from './components/Shop/Products';
-import useHttp from './hooks/use-http';
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux'
-import { productsActions } from './store/products-slice';
+import Notification from './components/UI/Notification';
+import {sendCartData, getCartData} from './store/cart-slice'
+import {getProductsData} from './store/products-slice'
+
+let isInitialLoad = true
 
 function App() {
   const dispatch = useDispatch()
 
   const showCart = useSelector(state => state.cart.showCart)
+  const cartIsLoaded = useSelector(state => state.cart.cartIsLoaded)
+  const cartItems = useSelector(state => state.cart.cartItems)
+  const notification = useSelector(state => state.UI.notification)
 
-  const returnData = useCallback((data) => {
-    const loadedProducts = [];
-
-    for (const key in data) {
-      loadedProducts.push({
-        id: key,
-        title: data[key].title,
-        description: data[key].description,
-        price: data[key].price
-      });
-    }
-
-    dispatch(productsActions.setProducts(loadedProducts))
+  useEffect(() => {
+    dispatch(getCartData())
+    dispatch(getProductsData())
   }, [dispatch])
 
-  const {isLoading, error, sendRequest} = useHttp(returnData)
-
   useEffect(() => {
-      dispatch(productsActions.setLoading(isLoading))
-  }, [dispatch, isLoading])
+    if(isInitialLoad) {
+      isInitialLoad = false
+      return
+    }
 
-  if(error) {
-    console.log(error)
-  }
+    if(!cartIsLoaded) {
+      return
+    }
 
-  useEffect(() => {
-    sendRequest({
-      url: 'https://react-http-learning-e8ee3-default-rtdb.firebaseio.com/products.json'
-    })
-  }, [sendRequest])
+    dispatch(sendCartData(cartItems))
+  }, [cartIsLoaded, cartItems, dispatch])
   
   return (
+    <>
+    {notification && <Notification status={notification.status} title={notification.title} message={notification.message} />}
     <Layout>
       {showCart && <Cart />}
       <Products />
     </Layout>
+    </>
   );
 }
 
