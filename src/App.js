@@ -1,48 +1,49 @@
-import Cart from './components/Cart/Cart';
-import Layout from './components/Layout/Layout';
-import Products from './components/Shop/Products';
-import { useEffect } from 'react';
-import { useDispatch, useSelector} from 'react-redux'
-import Notification from './components/UI/Notification';
-import {sendCartData, getCartData} from './store/cart-slice'
-import {getProductsData} from './store/products-slice'
+import React, {Suspense} from 'react'
+import {Route, Switch, Redirect} from 'react-router-dom'
+import Quotes from './pages/Quotes'
+import Layout from './components/layout/Layout'
+import { getQuotesData } from './store/quotes-slice'
+import { useEffect } from 'react'
+import {useDispatch} from 'react-redux'
+import LoadingSpinner from './components/UI/LoadingSpinner'
 
-let isInitialLoad = true
+const Quote = React.lazy(() => import('./pages/Quote'))
+const AddQuote = React.lazy(() => import('./pages/AddQuote'))
+const NotFound = React.lazy(() => import('./pages/NotFound'))
 
 function App() {
   const dispatch = useDispatch()
-
-  const showCart = useSelector(state => state.cart.showCart)
-  const cartIsLoaded = useSelector(state => state.cart.cartIsLoaded)
-  const cartItems = useSelector(state => state.cart.cartItems)
-  const notification = useSelector(state => state.UI.notification)
-
+  
   useEffect(() => {
-    dispatch(getCartData())
-    dispatch(getProductsData())
+    dispatch(getQuotesData())
   }, [dispatch])
 
-  useEffect(() => {
-    if(isInitialLoad) {
-      isInitialLoad = false
-      return
-    }
-
-    if(!cartIsLoaded) {
-      return
-    }
-
-    dispatch(sendCartData(cartItems))
-  }, [cartIsLoaded, cartItems, dispatch])
-  
   return (
-    <>
-    {notification && <Notification status={notification.status} title={notification.title} message={notification.message} />}
     <Layout>
-      {showCart && <Cart />}
-      <Products />
+      <Suspense fallback={
+        <div className='centered'>
+          <LoadingSpinner />
+        </div>
+      }>
+        <Switch>
+          <Route path='/' exact>
+            <Redirect to='/quotes'/>
+          </Route>
+          <Route path='/quotes' exact>
+            <Quotes />
+          </Route>
+          <Route path='/quotes/:id'>
+            <Quote />
+          </Route>
+          <Route path='/add-quote'>
+            <AddQuote />
+          </Route>
+          <Route path='*'>
+            <NotFound />
+          </Route>
+        </Switch>
+      </Suspense>
     </Layout>
-    </>
   );
 }
 
