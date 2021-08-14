@@ -1,11 +1,11 @@
-import ImageOne from '../assets/panorama-beautiful-green-forest-summer-nature-scenery-yellow-wild-flowers-panorama-beautiful-green-forest-landscape-131579660.jpeg'
+import ImageOne from '../assets/image1.jpeg'
 
 const About = () => {
   return (
-    <section>
-      <h1>About</h1>
-      <img src={ImageOne} alt='idk' />
-    </section>
+    <>
+    <h1>About</h1>
+    <img src={ImageOne} alt='idk'/>
+    </>
   )
 }
 
